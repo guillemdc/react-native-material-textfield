@@ -352,7 +352,9 @@ export default class TextField extends PureComponent {
     }
 
     if (clearTextOnFocus) {
-      this.clear();
+      requestAnimationFrame(() => { // Modified by Guillemdc to fix crash on React Native 6.4
+        this.clear();
+      });
     }
 
     this.focused = true;
